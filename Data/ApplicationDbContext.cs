@@ -13,21 +13,20 @@ namespace OrderProcessingSystem.API.Data
         {
         }
 
-        // DbSet properties for your entities
+        // DbSet properties 
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
 
-        // Configure relationships or seed data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configure the one-to-many relationship between Order and OrderItem
+            // one-to-many relationship between Order and OrderItem
             modelBuilder.Entity<Order>()
                 .HasMany(o => o.Items)
                 .WithOne(oi => oi.Order)
                 .HasForeignKey(oi => oi.OrderId);
             
-            // Configure the many-to-one relationship between OrderItem and Product
+            // many-to-one relationship between OrderItem and Product
             modelBuilder.Entity<OrderItem>()
                 .HasOne(oi => oi.Product)
                 .WithMany()

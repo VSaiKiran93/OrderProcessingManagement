@@ -1,8 +1,12 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.2.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProcessingSystem.API", "OrderProcessingSystem.API.csproj", "{6B4C9720-9DB7-74D2-7D0D-0CE76306539C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{67CB7DA5-87D7-4BDC-98F2-5B7CB7DB9F67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderProcessingSystem.Tests", "Tests\OrderProcessingSystem.Tests\OrderProcessingSystem.Tests.csproj", "{A594080D-734D-459D-9BC6-16DC85CCCC9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -14,11 +18,18 @@ Global
 		{6B4C9720-9DB7-74D2-7D0D-0CE76306539C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B4C9720-9DB7-74D2-7D0D-0CE76306539C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B4C9720-9DB7-74D2-7D0D-0CE76306539C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A594080D-734D-459D-9BC6-16DC85CCCC9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A594080D-734D-459D-9BC6-16DC85CCCC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A594080D-734D-459D-9BC6-16DC85CCCC9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A594080D-734D-459D-9BC6-16DC85CCCC9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9EB75752-15B2-4389-8D32-BBC9313C4A3E}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A594080D-734D-459D-9BC6-16DC85CCCC9A} = {67CB7DA5-87D7-4BDC-98F2-5B7CB7DB9F67}
 	EndGlobalSection
 EndGlobal

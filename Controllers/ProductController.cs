@@ -30,7 +30,7 @@ namespace OrderProcessingSystem.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var product = await _repository.GetByIdAsync(id); // Use async method
+            var product = await _repository.GetByIdAsync(id);
             return product != null ? Ok(product) : NotFound();
         }
 
@@ -44,17 +44,37 @@ namespace OrderProcessingSystem.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Product product)
         {
-            var existing = await _repository.GetByIdAsync(id); // Use async method
+            var existing = await _repository.GetByIdAsync(id); 
             if (existing == null) return NotFound();
-            await _repository.UpdateAsync(product); // Use async method
+            await _repository.UpdateAsync(product); 
             return NoContent();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            await _repository.DeleteAsync(id); // Use async method
+            await _repository.DeleteAsync(id); 
             return NoContent();
+        }
+
+        [HttpPost("{id}/restock")]
+        public async Task<IActionResult> RestockProduct(int id, [FromBody] int quantity)
+        {
+            if (quantity <= 0)
+            {
+                return BadRequest("Quantity must be greater than zero.");
+            }
+
+            var product = await _repository.GetByIdAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            product.StockQuantity += quantity;
+            await _repository.UpdateAsync(product);
+
+            return Ok(product);
         }
     }
 }

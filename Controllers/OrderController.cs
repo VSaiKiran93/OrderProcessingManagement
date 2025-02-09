@@ -19,12 +19,28 @@ namespace OrderProcessingSystem.API.Controllers
             _service = service;
         }
 
-        // POST: api/orders
-        [HttpPost]
-        public async Task<IActionResult> PlaceOrder(Order order)
+        // POST: api/orders/place-order
+        [HttpPost("place-order")]
+        public async Task<IActionResult> PlaceOrder([FromBody] OrderRequest orderRequest)
         {
             try
             {
+                // Validate inputs
+                if (orderRequest.ProductId <= 0 || orderRequest.Quantity <= 0)
+                {
+                    return BadRequest("Invalid product ID or quantity.");
+                }
+
+                // Convert OrderRequest to Order
+                var order = new Order
+                {
+                    Status = "Pending Fulfillment",
+                    Items = new List<OrderItem>
+                {
+                    new OrderItem { ProductId = orderRequest.ProductId, Quantity = orderRequest.Quantity }
+                }
+                };
+
                 var createdOrder = await _service.PlaceOrderAsync(order);
                 return CreatedAtAction(nameof(GetOrder), new { id = createdOrder.Id }, createdOrder);
             }

@@ -22,4 +22,10 @@ namespace OrderProcessingSystem.API.Models
         public int OrderId { get; set; }
         public Order? Order { get; set; }
     }
+
+    public class OrderRequest
+    {
+        public int ProductId { get; set; }
+        public int Quantity { get; set; }
+    }
 }
