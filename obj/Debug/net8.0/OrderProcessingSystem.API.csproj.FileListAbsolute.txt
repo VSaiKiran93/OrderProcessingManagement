@@ -1,7 +1,9 @@
+/Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/xunit.abstractions.dll
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/appsettings.Development.json
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/appsettings.json
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/Tests/OrderProcessingSystem.Tests/obj/OrderProcessingSystem.Tests.csproj.nuget.dgspec.json
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/Tests/OrderProcessingSystem.Tests/obj/project.assets.json
+/Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/xunit.runner.visualstudio.testadapter.dll
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/OrderProcessingSystem.API
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/OrderProcessingSystem.API.deps.json
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/OrderProcessingSystem.API.runtimeconfig.json
@@ -20,6 +22,7 @@
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Design.dll
+/Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Sqlite.dll
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/Microsoft.Extensions.DependencyModel.dll
@@ -47,7 +50,6 @@
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/System.Composition.Hosting.dll
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/System.Composition.Runtime.dll
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/System.Composition.TypedParts.dll
-/Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/xunit.abstractions.dll
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/xunit.assert.dll
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/xunit.core.dll
 /Users/kiran/OrderProcessingSystem.API/bin/Debug/net8.0/xunit.execution.dotnet.dll

@@ -11,6 +11,6 @@ namespace OrderProcessingSystem.API.Services
         Task<Order> PlaceOrderAsync(Order order);
         Task<bool> CancelOrderAsync(int orderId);
         Task FulfillOrdersAsync();
-        Task<Order> GetOrderAsync(int id);
+        Task<Order?> GetOrderAsync(int id);
     }
 }

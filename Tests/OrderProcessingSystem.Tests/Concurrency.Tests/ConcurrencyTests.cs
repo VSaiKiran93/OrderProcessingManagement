@@ -1,20 +1,33 @@
-using Moq;
-using Xunit;
-using OrderProcessingSystem.API.Services;
-using OrderProcessingSystem.API.Models;
-using OrderProcessingSystem.API.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using OrderProcessingSystem.API.Data;
+using OrderProcessingSystem.API.Models;
+using OrderProcessingSystem.API.Repositories;
+using OrderProcessingSystem.API.Services;
+using OrderProcessingSystem.API.Exceptions;
+using Microsoft.Extensions.Logging;
+using Xunit;
+using Moq;
 
 namespace OrderProcessingSystem.Tests.Concurrency.Tests
 {
-    public class ConcurrencyTests
+    public class ConcurrencyTests : IClassFixture<DbContextFixture>
     {
-        private readonly Mock<IOrderService> _mockOrderService;
+        private readonly ApplicationDbContext _dbcontext;
+        private readonly ProductRepository _productRepository;
+        private readonly OrderService _orderService;
 
-        public ConcurrencyTests()
+        public ConcurrencyTests(DbContextFixture fixture)
         {
-            _mockOrderService = new Mock<IOrderService>();
+            _dbcontext = new ApplicationDbContext(fixture.Options);
+            _productRepository = new ProductRepository(_dbcontext);
+            _orderService = new OrderService(_dbcontext, _productRepository, Mock.Of<ILogger<OrderService>>());
+
+            // Seed the database with a product
+            _dbcontext.Products.Add(new Product { Id = 1, Name = "Product 1", Price = 19.99M, StockQuantity = 10 });
+            _dbcontext.SaveChanges();
         }
 
         [Theory]
@@ -22,13 +35,6 @@ namespace OrderProcessingSystem.Tests.Concurrency.Tests
         [InlineData(3)] // 3 concurrent orders
         public async Task PlaceOrder_ConcurrentRequests_HandlesInventoryCorrectly(int concurrencyLevel)
         {
-            // Arrange
-            var setup = _mockOrderService
-                .SetupSequence(service => service.PlaceOrderAsync(It.IsAny<Order>()))
-                .ReturnsAsync(new Order { Items = new List<OrderItem> { new OrderItem { ProductId = 1, Quantity = 6 } } })
-                .ReturnsAsync(new Order { Items = new List<OrderItem> { new OrderItem { ProductId = 1, Quantity = 6 } } })
-                .ThrowsAsync(new InsufficientStockException("Insufficient stock"));
-
             var tasks = new List<Task>();
             var exceptions = new List<Exception>();
 
@@ -39,10 +45,14 @@ namespace OrderProcessingSystem.Tests.Concurrency.Tests
                 {
                     try
                     {
-                        await _mockOrderService.Object.PlaceOrderAsync(new Order
+                        var order = new Order
                         {
-                            Items = new List<OrderItem> { new OrderItem { ProductId = 1, Quantity = 6 } }
-                        });
+                            Items = new List<OrderItem>
+                            {
+                                new OrderItem { ProductId = 1, Quantity = 6 }
+                            }
+                        };
+                        await _orderService.PlaceOrderAsync(order);
                     }
                     catch (Exception ex)
                     {
@@ -56,10 +66,13 @@ namespace OrderProcessingSystem.Tests.Concurrency.Tests
             // Assert: Ensure at least one InsufficientStockException occurred
             Assert.Contains(exceptions, ex => ex is InsufficientStockException);
 
-            // Verify that PlaceOrderAsync was called exactly concurrencyLevel times
-            _mockOrderService.Verify(service => service.PlaceOrderAsync(It.IsAny<Order>()), Times.Exactly(concurrencyLevel));
+            // Ensure stock is not negative after all orders are processed
+            var product = await _productRepository.GetByIdAsync(1);
+            Assert.True(product.StockQuantity >= 0, "Stock quantity should not be negative.");
 
-            // Additional assertions can be added, like verifying if stock is decremented correctly or handling other edge cases
+            // Verify that the number of successful orders did not exceed available stock
+            var successfulOrders = concurrencyLevel - exceptions.Count(ex => ex is InsufficientStockException);
+            Assert.True(successfulOrders <= 10, "More than available stock was ordered.");
         }
     }
 }

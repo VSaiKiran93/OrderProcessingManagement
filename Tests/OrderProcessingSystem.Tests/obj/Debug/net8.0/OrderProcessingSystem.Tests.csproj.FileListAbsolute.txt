@@ -26,9 +26,12 @@
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Design.dll
+/Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.InMemory.dll
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Sqlite.dll
+/Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/Microsoft.Extensions.DependencyModel.dll
+/Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/Microsoft.OpenApi.dll
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/Microsoft.TestPlatform.CoreUtilities.dll
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/Microsoft.TestPlatform.PlatformAbstractions.dll
@@ -53,6 +56,7 @@
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/System.Composition.Hosting.dll
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/System.Composition.Runtime.dll
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/System.Composition.TypedParts.dll
+/Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/System.Diagnostics.DiagnosticSource.dll
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/xunit.assert.dll
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/xunit.core.dll
 /Users/kiran/OrderProcessingSystem.API/Tests/OrderProcessingSystem.Tests/bin/Debug/net8.0/xunit.execution.dotnet.dll

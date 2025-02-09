@@ -32,10 +32,10 @@ namespace OrderProcessingSystem.API.Data
                 .WithMany()
                 .HasForeignKey(oi => oi.ProductId);
 
-            // Seed initial data
+            // Seed initial data for products
             modelBuilder.Entity<Product>().HasData(
-                new Product { Id = 1, Name = "Product 1", Price = 19.99M },
-                new Product { Id = 2, Name = "Product 2", Price = 29.99M }
+                new Product { Id = 1, Name = "Product 1", Price = 19.99M,  StockQuantity = 100 },
+                new Product { Id = 2, Name = "Product 2", Price = 29.99M, StockQuantity = 50 }
             );
         }
     }
